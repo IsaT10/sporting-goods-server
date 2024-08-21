@@ -29,6 +29,9 @@ class QueryBuilder<T> {
 
   filter() {
     const queryObj = { ...this.query };
+
+    // queryObj['category.name'] = queryObj['category'];
+
     const excludeFileds: string[] = [
       'searchTerm',
       'sort',
@@ -36,6 +39,14 @@ class QueryBuilder<T> {
       'page',
       'fields',
     ];
+
+    // if (queryObj['category']) {
+    //   queryObj['category.name'] = queryObj['category'];
+    //   delete queryObj['category'];
+    // }
+
+    // console.log(queryObj);
+    // console.log({ 'category.name': 'Football' });
 
     excludeFileds.forEach((el) => delete queryObj[el]);
 

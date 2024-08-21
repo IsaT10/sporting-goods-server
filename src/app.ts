@@ -8,7 +8,12 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://gearpro.netlify.app/'],
+  })
+);
 
 // initial server start
 app.get('/', (req: Request, res: Response) => {
@@ -29,3 +34,40 @@ app.all('*', notFoundRoute);
 app.use(globalErrorHandler);
 
 export default app;
+
+// import express, { Application, Request, Response } from 'express';
+// import cors from 'cors';
+// import cookieParser from 'cookie-parser';
+// import { notFoundRoute } from './error/noFoundRoute';
+// import router from './routes';
+// import globalErrorHandler from './middleware/globalErrorHandler';
+// const app: Application = express();
+
+// app.use(express.json());
+// app.use(cookieParser());
+// // app.use(cors());
+// app.use(
+//   cors({
+//     origin: ['https://gearpro.netlify.app'],
+//   })
+// );
+
+// // initial server start
+// app.get('/', (req: Request, res: Response) => {
+//   res.status(200).json({ message: 'Server is running' });
+// });
+
+// app.get('/test', (req: Request, res: Response) => {
+//   res.status(200).json({ message: 'testing...' });
+// });
+
+// // api routes
+// app.use('/api/v1', router);
+
+// // not found route
+// app.all('*', notFoundRoute);
+
+// // handle error globally
+// app.use(globalErrorHandler);
+
+// export default app;

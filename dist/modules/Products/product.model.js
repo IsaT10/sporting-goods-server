@@ -1,8 +1,8 @@
-import { Schema, model } from 'mongoose';
-import { TProduct } from './product.interface';
-
-const ProductSchema = new Schema<TProduct>(
-  {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Product = void 0;
+const mongoose_1 = require("mongoose");
+const ProductSchema = new mongoose_1.Schema({
     name: { type: String, required: true, trim: true },
     brand: { type: String, required: true, trim: true },
     // category: {
@@ -16,8 +16,5 @@ const ProductSchema = new Schema<TProduct>(
     price: { type: Number, required: true },
     rating: { type: Number, required: true },
     stock: { type: Number, required: true },
-  },
-  { timestamps: true }
-);
-
-export const Product = model<TProduct>('Product', ProductSchema);
+}, { timestamps: true });
+exports.Product = (0, mongoose_1.model)('Product', ProductSchema);

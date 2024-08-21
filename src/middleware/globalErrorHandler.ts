@@ -6,6 +6,7 @@ import handleDuplicateError from '../error/handleDuplicate';
 import config from '../config';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  // next();
   err.statusCode = err.statusCode || 500;
 
   let error = { ...err };
